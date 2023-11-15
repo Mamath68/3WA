@@ -27,6 +27,18 @@ addMessage("Let's go!");
  * with addMessage()
  */
 
+const form = document.querySelector("form");
+const messageInput = document.querySelector('input[type="text"]');
+// console.log(form);
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (messageInput.value.length > 0) {
+        addMessage(messageInput.value);
+    }
+    messageInput.value = "";
+});
+
 // Code here
 
 /**
@@ -34,11 +46,20 @@ addMessage("Let's go!");
  * https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
  */
 
+const messages = document.querySelectorAll(".messages");
+console.log(messages);
+messages.forEach((message) =>
+    message.addEventListener("click", () => {
+        alert("Hello World");
+    })
+);
+
 // Code here
 
 /**
  * Listen to every Keydown (from the keyboard) in the input and call
  * the function typing()
  */
-
+// messageInput.addEventListener("keydown", typing);
+messageInput.onkeydown = () => typing();
 // Code here
