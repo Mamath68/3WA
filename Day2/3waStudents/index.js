@@ -1,20 +1,20 @@
-// import chalk from "chalk"
-import fs from 'fs'
-// import myStudents from "./app.js"
+// import fs from 'fs'
+import chalk from "chalk"
+import myStudents from "./app.js"
 
-// // Combine styled and normal strings
-// console.log("My 4 Coworkers are : " + chalk.blue(myStudents[0]) + ", " + chalk.red(myStudents[1]) + ", " + chalk.white(myStudents[2]) + " and " + chalk.green(myStudents[3]));
+// Combine styled and normal strings
+console.log("My 4 Coworkers are : " + chalk.blue(myStudents[0]) + ", " + chalk.red(myStudents[1]) + ", " + chalk.yellow(myStudents[2]) + " and " + chalk.green(myStudents[3]));
 
 
-const server = require('http').createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write('<h1>Hello World</h1>');
-    res.end();
-});
+// const server = require('http').createServer((req, res) => {
+//     res.writeHead(200, { 'Content-Type': 'text/html' });
+//     res.write('<h1>Hello World</h1>');
+//     res.end();
+// });
 
-server.listen(8000, () => {
-    console.log('Le serveur est en cours d\'exécution sur http://localhost:8000');
-});
+// server.listen(8000, () => {
+//     console.log('Le serveur est en cours d\'exécution sur http://localhost:8000');
+// });
 
 // require('axios').get('http://www.google.com')
 //     .then(response => {
