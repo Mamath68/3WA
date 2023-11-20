@@ -1,0 +1,90 @@
+@media only screen and (device-width : 414px) {
+    article {
+        padding: 0.5vh !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1vh 0;
+    }
+
+    button:active {
+        transform: scale(0.97);
+        box-shadow: 7px 5px 56px -10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        height: 80vh;
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .container #score {
+        text-align: center;
+    }
+
+    img {
+        width: 70vw;
+    }
+
+    button {
+        height: 15vh !important;
+        width: 45vw !important;
+        margin: 4vh 1vh 0vh 1.2vw !important;
+    }
+}
+
+@media only screen and (device-width : 896px) {
+    article {
+        padding: 0.5vh !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1vh 0;
+    }
+
+    button:active {
+        transform: scale(0.97);
+        box-shadow: 7px 5px 56px -10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        height: 80vh;
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .container #score {
+        text-align: center;
+    }
+
+    img {
+        width: 70vw;
+    }
+
+    button {
+        height: 15vh !important;
+        width: 45vw !important;
+        margin: 4vh 1vh 0vh 1.2vw !important;
+    }
+
+}
