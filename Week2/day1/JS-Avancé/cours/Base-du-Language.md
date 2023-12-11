@@ -2,19 +2,19 @@
 
 ## Chargement des fichiers
 
-Les fichiers js sont chargés à l'aide de la balise _script_ dans le fichier _index.html_.
+Les fichiers js sont chargés à l'aide de la balise *script* dans le fichier *index.html*.
 
 ```html
 <script src="js/main.js" defer>
 ```
 
-L'attribut _defer_ permet au script d'être chargé seulement quand la page est prête.
+L'attribut *defer* permet au script d'être chargé seulement quand la page est prête.
 
 ## Syntaxe
 
 ### Variables
 
-Les variables permettent de stocker des données et de les réutiliser plus loin.En JavaScript il existe les mots - clé *let* et _const_ pour stocker des informations.
+Les variables permettent de stocker des données et de les réutiliser plus loin. En JavaScript il existe les mots-clé *let* et *const* pour stocker des informations.
 
 ```javascript
 // Déclaration d'une variable text contenant la chaîne de caractères Hello world
@@ -30,9 +30,29 @@ const pi = 3.14;
 // pi = 42;     => erreur !
 ```
 
-Les variables et constantes déclarées à l'aide de _let_ et _const_ n'existent que dans le bloc dans lequel elles ont été définies.
+Les variables et constantes déclarées à l'aide de *let* et *const* n'existent que dans le bloc dans lequel elles ont été définies.
 
 ### Types
+
+#### Chaîne de caractères
+
+Les chaînes de caractères sont des données textuelles. Une chaîne de caractère est entourée de "" ou ''.
+
+```javascript
+const name = "Toto";
+let age = 20;
+
+console.log('Bonjour ' + name + ', tu as ' + age + 'ans');
+```
+
+Le caractère "+" permet de faire de la concaténation, c'est-à-dire rassembler plusieurs chaîne de caractères. Pour éviter de mettre des "+" partout, on peut utiliser l'interpolation de chaînes de caractères.
+
+```javascript
+const name = "Toto";
+let age = 20;
+
+console.log(`Bonjour ${name}, tu as ${age} ans`);
+```
 
 #### Tableaux
 
@@ -48,7 +68,7 @@ const fruits = [
 ];
 ```
 
-Ces données sont identifiées par un index dans le tableau, index qui commence toujours à 0 et qui augmente de 1 entre chaque élément.On peut récupérer le nombre d'éléments contenus dans un tableau à l'aide de la propriété *length*.
+Ces données sont identifiées par un index dans le tableau, index qui commence toujours à 0 et qui augmente de 1 entre chaque élément. On peut récupérer le nombre d'éléments contenus dans un tableau à l'aide de la propriété *length*.
 
 ```javascript
 console.log("Il y a " + fruits.length + " éléments dans ce tableau");
@@ -69,11 +89,11 @@ On peut accéder à un élément en particulier dans ce tableau grâce à l'inde
 console.log(fruits[1]);     // Affiche Pomme
 ```
 
-Pour en savoir plus sur les tableaux: [Documentation sur les tableaux](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array)
+Pour en savoir plus sur les tableaux : [Documentation sur les tableaux](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 #### Objets
 
-Les objets permettent de stocker plusieurs données.Ces données sont identifiées par un nom de propriété.
+Les objets permettent de stocker plusieurs données. Ces données sont identifiées par un nom de propriété.
 
 ```javascript
 const user = {
@@ -84,9 +104,8 @@ const user = {
 
 On peut accéder à une donnée à l'aide de la propriété.
 
-        ```javascript
+```javascript
 console.log(user.firstname + " " + user.lastname);
-
 ```
 
 Il est possible de rajouter des propriétés sur un objet déjà existant.
@@ -112,7 +131,7 @@ if (condition) {
 }
 ```
 
-        ```javascript
+```javascript
 let age = 20;
 
 if (age >= 18) {
@@ -120,14 +139,13 @@ if (age >= 18) {
 } else {
     console.log("Vous êtes une personne mineure");
 }
-
 ```
 
 ### Boucles
 
 Les boucles vont permettre de répéter certaines instructions en fonction d'une condition.
 
-        ```javascript
+```javascript
 while (condition) {
     /*
      * Instructions exécutées tant que la condition est vraie (condition == true)
@@ -156,7 +174,7 @@ let counter = 1;
 
 while (counter <= 100) {
     console.log(counter);
-
+    
     counter++;
 }
 
@@ -169,7 +187,7 @@ while (userInput < 1 || userInput > 100) {
 
 #### La boucle for...of
 
-La boucle for...of permet de parcourir un tableau(aussi appelée boucle "foreach").
+La boucle for...of permet de parcourir un tableau (aussi appelée boucle "foreach").
 
 ```javascript
 // Avant l'arrivée de cette boucle "foreach", on pouvait parcourir les tableaux avec la boucle for traditionnelle
