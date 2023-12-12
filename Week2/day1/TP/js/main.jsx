@@ -6,9 +6,10 @@ const elements = {
     taskList: document.querySelector('#task-list'),
     taskForm: document.querySelector('#task-form'),
     removeTasksButton: document.querySelector('#remove-tasks')
-
 };
+
 elements.taskList.style.listStyle = "none";
+
 let tasks = [
     {
         title: "Payer les factures",
@@ -31,7 +32,6 @@ loadTasks();
 
 elements.taskForm.addEventListener('submit', onCreateTask);
 elements.removeTasksButton.addEventListener('click', onDeleteTasks);
-
 
 function onCreateTask(e) {
     // Stopper le rechargement de la page
@@ -60,27 +60,27 @@ function onUpdateTask(e) {
 function onDeleteTasks() {
     // Mettre à jour le tableau des tâches actuelles : 
     // on retire toutes celles qui ont la propriété isCompleted à true
+    // => On fait un nouveau tableau qui ne contiendra que les tâches avec la propriété isCompleted à false
+    // const newTasks = [];
 
-    const newTasks = [];
+    // for (let task of tasks) {
+    //     if (! task.isCompleted) {
+    //         newTasks.push(task);
+    //     }
+    // }
 
-    for (let task of tasks) {
-        if (!task.isCompleted) {
-            newTasks.push(task);
-        }
-    }
-
-    tasks = newTasks;
-
+    tasks = tasks.filter(task => !task.isCompleted);
+    // tasks = tasks.filter(function (task) {
+    //     return !task.isCompleted;
+    // });
     loadTasks();
 }
 
 function loadTasks() {
     let html = '';
 
-    let index = 0;
-
     // Parcours du tableau des tâches
-    for (let task of tasks) {
+    for (let [index, task] of tasks.entries()) {
         // 1ère approche
 
         // // Création de la checbkox
@@ -109,7 +109,6 @@ function loadTasks() {
                 </label>
             </li>
         `;
-        index++;
     }
 
     elements.taskList.innerHTML = html;
