@@ -1,54 +1,46 @@
-// Charger les régions au chargement de la page
-document.addEventListener("DOMContentLoaded", loadRegions);
+const elements = {
+    regionsList: document.querySelector('#regions'),
+    departmentsList: document.querySelector('#departments'),
+    citiesForm: document.querySelector('#show-cities'),
+    citiesList: document.querySelector('#cities-list')
+};
 
-function loadRegions() {
-    fetch('https://geo.api.gouv.fr/regions')
+const baseUrl = 'https://geo.api.gouv.fr';
+
+// Au chargement de la page on envoie une requête HTTP pour récupérer toutes les régions
+fetch(`${baseUrl}/regions`).then(response => response.json()).then(response => {
+    // for (const region of response) {
+    //     const option = document.createElement('option');
+    //     option.value = region.code;
+    //     option.textContent = region.nom;
+    //     elements.regionsList.append(option);
+    // }
+
+    elements.regionsList.innerHTML = response.map(region => {
+        return `<option value="${region.code}">${region.nom}</option>`;
+    }).join('');
+});
+
+elements.regionsList.addEventListener('change', (e) => {
+    // Récupération des départements de la région sélectionnée
+    fetch(`${baseUrl}/regions/${e.target.value}/departements`)
         .then(response => response.json())
-        .then(data => {
-            const regionsDropdown = document.getElementById('regions');
-            data.forEach(region => {
-                const option = document.createElement('option');
-                option.value = region.codeRegion;
-                option.text = region.code + ' - ' + region.nom;
-                regionsDropdown.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Erreur lors du chargement des régions:', error));
-}
+        .then(response => {
+            elements.departmentsList.innerHTML = response.map(department => {
+                return `<option value="${department.code}">${department.nom}</option>`;
+            }).join('');
+        });
+});
 
-function loadDepartments() {
-    const selectedRegionId = document.getElementById('regions').value;
+elements.citiesForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-    fetch(`https://geo.api.gouv.fr/regions/${selectedRegionId}/departements`)
+    // Récupération de la liste des villes du département sélectionné
+    fetch(`${baseUrl}/departements/${elements.departmentsList.value}/communes`)
         .then(response => response.json())
-        .then(data => {
-            const departmentsDropdown = document.getElementById('departments');
-            departmentsDropdown.innerHTML = '';
-
-            data.forEach(departement => {
-                const option = document.createElement('option');
-                option.value = departement.code;
-                option.text = departement.code + ' - ' + departement.nom;
-                departmentsDropdown.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Erreur lors du chargement des départements:', error));
-}
-
-function loadCities() {
-    const selectedDepartmentId = document.getElementById('departments').value;
-
-    fetch(`https://geo.api.gouv.fr/departements/${selectedDepartmentId}/communes`)
-        .then(response => response.json())
-        .then(data => {
-            const cityList = document.getElementById('cityList');
-            cityList.innerHTML = '';
-
-            data.forEach(city => {
-                const listItem = document.createElement('li');
-                listItem.textContent = city.nom;
-                cityList.appendChild(listItem);
-            });
-        })
-        .catch(error => console.error('Erreur lors du chargement des villes:', error));
-}
+        .then(response => {
+            elements.citiesList.innerHTML = response.map(city => {
+                return `<li>${city.nom}</li>`;
+            }).join('');
+        });
+});

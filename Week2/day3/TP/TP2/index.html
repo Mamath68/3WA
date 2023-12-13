@@ -11,19 +11,23 @@
     <title>TP2 - GEO-API-GOUV</title>
 </head>
 
-<body>
-    <label for="regions">Régions:</label>
-    <select id="regions" class="form-select" onchange="loadDepartments()">
-    </select>
-    
-    <label for="departments">Départements:</label>
-    <select class="form-select" id="departments">
-    </select>
-    
-    <button type="button" class="btn btn-primary" onclick="loadCities()">Afficher les villes</button>
-    
+<body class="container">
+    <form id="show-cities">
+        <fieldset>
+            <label for="regions">Régions</label>
+            <select class="form-select" name="regions" id="regions"></select>
+        </fieldset>
+        <fieldset>
+            <label for="departments">Départements</label>
+            <select class="form-select" name="departments" id="departments"></select>
+        </fieldset>
+        <fieldset>
+            <button type="submit" class="btn btn-primary">Afficher la liste des villes</button>
+        </fieldset>
+    </form>
+
     <h2>Villes:</h2>
-    <ul class="list-group" id="cityList">
+    <ul class="list-group" id="cities-list">
     </ul>
 </body>
 
