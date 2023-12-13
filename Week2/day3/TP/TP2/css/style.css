@@ -1,0 +1,14 @@
+.dropdown-menu {
+    max-height: 200px;
+    overflow: auto;
+}
+
+#options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#options .dropdown {   
+    margin: 10px;
+}

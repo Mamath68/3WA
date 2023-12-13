@@ -5,7 +5,7 @@
 
 #canvas {
     border: 2px solid black;
-    cursor: pointer;
+    cursor: crosshair;
 }
 
 #options {
@@ -25,34 +25,34 @@
 
 .colors {
     display: flex;
+}
 
-    .black {
-        background-color: black;
-    }
+.black {
+    background-color: #000000;
+}
 
-    .firebrick {
-        background-color: firebrick;
-    }
+.firebrick {
+    background-color: #b22222;
+}
 
-    .orange {
-        background-color: orange;
-    }
+.orange {
+    background-color: #ffa500;
+}
 
-    .yellow {
-        background-color: yellow;
-    }
+.yellow {
+    background-color: #ffff00;
+}
 
-    .green {
-        background-color: green;
-    }
+.green {
+    background-color: #008000;
+}
 
-    .blue {
-        background-color: blue;
-    }
+.blue {
+    background-color: #0000ff;
+}
 
-    .purple {
-        background-color: purple;
-    }
+.purple {
+    background-color: #800080;
 }
 
 
