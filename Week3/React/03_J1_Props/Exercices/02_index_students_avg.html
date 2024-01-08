@@ -17,23 +17,22 @@
 
     <script type="text/babel">
         const root = document.getElementById('root');
-        
-        const Message = (props) => {
-            return (
-                <p>
-                    {props.message}
-                </p>
-            )
+
+        const precision = 100;
+        const average = notes => {
+            if (notes == undefined || notes.length === 0) return null;
+
+            const average = notes.reduce((acc, curr) => acc + curr) / notes.length;
+            return Math.round(average * precision) / precision;
         }
 
-        const Messages = (props) => {
+        const Student = (props) => {
+            const { name, notes } = props;
             return (
-                <div>
-                    {props.message.map(
-                        (m, i) =>
-                            <Message key={i} message={m.message} />
-                    )}
-                </div>
+                <ul>
+                    <li>Name : {name}</li>
+                    <li>Average : {average(notes) || "Pas de notes"}</li>
+                </ul>
             )
         }
 
@@ -44,11 +43,13 @@
                 { notes: [18, 10, 19], name: "Alice" },
                 { notes: [10, 9, 11], name: "Bernard" },
                 { notes: [11, 17, 19], name: "Sophie" },
+                { name: "Sophie" },
+                { name: "Sophie" },
             ];
 
             return (
                 <div>
-                    <Messages students={students} />
+                    {students.map((student, i) => <Student key={i} {...student} />)}
                 </div>
             )
         }
