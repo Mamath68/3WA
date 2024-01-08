@@ -10,11 +10,6 @@
 
     <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
     <!-- babel => compilation du JSX -->
-    <style>
-        .App {
-            font-size: 13px;
-        }
-    </style>
 </head>
 
 <body>
@@ -22,6 +17,7 @@
 
     <script type="text/babel">
         const root = document.getElementById('root');
+        
         const Message = (props) => {
             return (
                 <p>
@@ -32,25 +28,27 @@
 
         const Messages = (props) => {
             return (
-                <div className="message">
-                    {props.message.map((m, i) => <Message key={i} message={m.message} />)}
+                <div>
+                    {props.message.map(
+                        (m, i) =>
+                            <Message key={i} message={m.message} />
+                    )}
                 </div>
             )
         }
 
         // Component
-        const App = (props) => {
-            const MESSAGES = [
-                { message: "React JS" },
-                { message: "React Native" },
-                { message: "Angular" },
-                { message: "Symfony" },
-                { message: "MongoDB" },
+        const App = () => {
+            const students = [
+                { notes: [12, 11, 10], name: "Alan" },
+                { notes: [18, 10, 19], name: "Alice" },
+                { notes: [10, 9, 11], name: "Bernard" },
+                { notes: [11, 17, 19], name: "Sophie" },
             ];
 
             return (
-                <div className="main">
-                    <Messages message={MESSAGES} />
+                <div>
+                    <Messages students={students} />
                 </div>
             )
         }
