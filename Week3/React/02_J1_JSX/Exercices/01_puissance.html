@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <style>
+        .heading {
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const root = document.getElementById('root');
+        // Component
+        const App = (props) => {
+            const n1 = 4;
+            const n2 = n1 ** 3;
+
+            const n3 = 3;
+            const n4 = n3 ** 3;
+
+            const n5 = 7;
+            const n6 = n5 ** 3;
+
+            const numbers = [4, 3, 7];
+            return (
+                <div>
+                    <h2>{n2}</h2>
+                    <h2>{n4}</h2>
+                    <h2>{n6}</h2>
+
+                    <ul>
+                        {numbers.map((elem, i) => <li key={i} >{elem}</li>)}
+                    </ul>
+
+                </div>
+            )
+        }
+
+        // Rendu dans le DOM
+        ReactDOM.createRoot(root).render(
+            <App />
+        );
+    </script>
+</body>
+
+</html>

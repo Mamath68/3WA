@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <style>
+        .heading {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const root = document.getElementById('root');
+        // Component
+        const Hello = (props) => {
+
+            // Partie JS logic
+            for (const e of [1, 2, 3]) {
+                console.log(e)
+            }
+
+            const elems = ['a', 'b', 'c', 'd'];
+
+            // partie templating
+            // render ( partie montée dans le DOM ) - 
+            return (
+                <div className="heading">
+                    <h1>{props.message}</h1>
+                    <p>{props.subtitle}</p>
+                    <ul>
+                        {elems.map((elem, i) => <li key={i} >{elem}</li>)}
+                    </ul>
+                </div>
+            )
+        }
+
+        // Rendu dans le DOM
+        ReactDOM.createRoot(root).render(
+            <Hello message="Hello React" subtitle="Enjoy !" />
+        );
+    </script>
+</body>
+
+</html>

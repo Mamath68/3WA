@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <!-- babel => compilation du JSX -->
+    <style>
+        .App {
+            font-size: 13px;
+        }
+
+        .number {
+            margin: 2.5em;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const root = document.getElementById('root');
+        const Number = ({ number, power }) => <p className="number">{number ** power}</p>;
+
+        // Component
+        const App = (props) => {
+            const numbers = [3, 4, 7];
+            const power = 3;
+
+            return (
+                <div className="App">{
+                    numbers.map((number, i) =>
+                        <Number number={number} power={power} />)
+                }
+                </div>
+            )
+        }
+
+
+        // Rendu dans le DOM
+        ReactDOM.createRoot(root).render(
+            <App />
+        );
+    </script>
+</body>
+
+</html>
