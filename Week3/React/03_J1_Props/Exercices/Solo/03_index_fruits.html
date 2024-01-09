@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+    <!-- babel => compilation du JSX -->
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const root = document.getElementById('root');
+
+        const precision = 100;
+        const average = prices => {
+            // error first 
+            /**
+             * Erreur en premier error first permet d'éliminer les cas où le script qui suit cette gestion des erreurs ne marcherait pas. 
+             * On vérifie que la clé note du littéral existe et on vérifie que l'on a bien des prices dans le tableau
+             * Si ce n'est pas le cas on retourne null
+             */
+            if (prices == undefined || prices.length == 0) return null;
+
+            const average = prices.reduce((acc, curr) => acc + curr) / prices.length;
+
+            // Math.round pour préserver le type float dans le calcul
+            return Math.round(average * precision) / precision;
+        }
+
+        const Products = (props) => {
+            const { name, prices } = props;
+            return (
+                <ul>
+                    <li>{name}
+                        {prices == undefined || prices.length == 0 ?
+                            <ul>
+                                <li>Pas de prix</li>
+                            </ul>
+                            :
+                            <ul>
+                                <li>Prices:</li>
+                                {prices.map((price, i) =>
+                                    <li key={i}>{price}</li>
+                                )}
+                                <li>Average : {average(prices) || "pas de prix"}</li>
+                            </ul>
+                        }
+                    </li>
+                </ul>
+            )
+        }
+
+        // Component
+        const App = () => {
+            const products = [
+                { prices: [1.2, 1.1, 1.0], name: "apples" },
+                { prices: [1.8, 1.0, 1.9], name: "oranges" },
+                { prices: [1.0, 0.9, 1.1], name: "bananas" },
+                { prices: [], name: "raspberry" },
+            ];
+
+            return (
+                <div>
+                    {products.map((product, i) => <Products key={i} {...product} />)}
+                </div>
+            )
+        }
+
+
+        // Rendu dans le DOM
+        ReactDOM.createRoot(root).render(
+            <App />
+        );
+    </script>
+</body>
+
+</html>

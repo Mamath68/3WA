@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const root = document.getElementById('root');
+
+        const Clock = () => {
+            const [timer, setTimer] = React.useState(new Date());
+
+            setTimeout(() => {
+                setTimer(new Date());
+                // met à jour la variable timer
+                console.log(timer);
+            }, 1000);
+            
+            const heures = timer.getHours();
+            const minutes = timer.getMinutes();
+            const secondes = timer.getSeconds();
+
+            // le return represente le render qui peut être réexecuté si la valeur change
+            return (
+                <p>{heures}h {minutes}min {secondes}s</p>
+            )
+        }
+
+        ReactDOM.createRoot(root).render(<Clock />);
+
+    </script>
+</body>
+
+</html>

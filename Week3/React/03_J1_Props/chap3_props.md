@@ -62,7 +62,7 @@ const MESSAGES = [
 
 Vous pouvez en effet avoir un composant dans un composant. Les composants de React sont déclaratifs comme les balises HTML.
 
-### Hiérarchie des compostans
+### Hiérarchie des composants
 
 ```jsx
 <App />
@@ -93,7 +93,7 @@ const students = [
 
 Créez deux composants et affichez pour chaque étudiant son nom et sa moyenne dans une liste ul/li.
 
-### Hiérarchie des compostants
+### Hiérarchie des composant
 
 ```jsx
 <App />
@@ -114,6 +114,7 @@ const products = [
   { prices: [1.2, 1.1, 1.0], name: "apples" },
   { prices: [1.8, 1.0, 1.9], name: "oranges" },
   { prices: [1.0, 0.9, 1.1], name: "bananas" },
+  { prices: [], name: "raspberry" },
 ];
 ```
 
@@ -141,11 +142,36 @@ oranges
 …
 ```
 
-## 04 Exercice Clock
+## 04.1 Exercice Population
+
+1. Créez une App React ( dans un fichier ), affichez pour chaque utilisateur la longuer des noms.
+
+1. Ordonnez les personnes de cette population par ordre décroissant de longueur de nom
+
+```js
+const populations = [
+    { "id" : 0, "name" : "Alan" },
+    { "id" : 1, "name" : "Albert" },
+    { "id" : 2, "name" : "Jhon" },
+    { "id" : 3, "name" : "Brice" },
+    { "id" : 4, "name" : "Alexendra" },
+    { "id" : 5, "name" : "Brad" },
+    { "id" : 6, "name" : "Carl" },
+    { "id" : 7, "name" : "Dallas" },
+    { "id" : 8, "name" : "Dennis" },
+    { "id" : 9, "name" : "Edgar" },
+    { "id" : 10, "name" : "Erika" },
+    { "id" : 11, "name" : "Isaac" },
+    { "id" : 12, "name" : "Ian" }
+]
+
+```
+
+## 04.2  Exercice Clock
 
 Faites cet exercice dans un fichier `index_horloge_clock.html`
 
-Définir un composant `<Clock />` et essayez d'implémenter une horologe. Faites en sorte que dans le DOM l'horloge se mette à jour et affiche les secondes, minutes et heures qui passent.
+1. Définir un composant `<Clock />` et essayez d'implémenter une horologe. Faites en sorte que dans le DOM l'horloge se mette à jour et affiche les secondes, minutes et heures qui passent.
 
 Remarques : vous pouvez utiliser un `setInterval` JavaScript pour re-lancer le rendu manuellement. Exemple :
 
@@ -160,4 +186,32 @@ Résultat souhaité (avec un affichage dynamique) :
 
 ```txt
   10h 25m 30s
+```
+
+## 00 Exercices supplémentaires
+
+Chaque exercice sera fait dans un fichier séparé
+
+- Exercice 001
+
+Dans l'exercice suivant affichez le chat qui a l'âge le plus important et l'âge le moins important.
+
+- Exercice 002
+
+1. Affichez le nom de chaque chat avec la première lettre dans une coleur à chaque fois différentes.
+1. Inverser le nom de chaque chat.
+
+```js
+const catsData = [
+  { name: 'Whiskers', age: 3, color: 'Gray and White' },
+  { name: 'Luna', age: 2, color: 'Black' },
+  { name: 'Simba', age: 4, color: 'Orange' },
+  { name: 'Midnight', age: 1, color: 'Black' },
+  { name: 'Bella', age: 5, color: 'Tabby' },
+  { name: 'Gizmo', age: 2, color: 'Gray' },
+  { name: 'Nala', age: 3, color: 'Beige' },
+  { name: 'Oliver', age: 4, color: 'White and Brown' },
+  { name: 'Cleo', age: 2, color: 'Calico' },
+  { name: 'Max', age: 6, color: 'Tabby' }
+];
 ```

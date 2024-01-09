@@ -14,15 +14,22 @@
 
 <body>
     <div id="root"></div>
-
     <script type="text/babel">
         const root = document.getElementById('root');
-
+        // gestion de la précision pour l'App
         const precision = 100;
         const average = notes => {
-            if (notes == undefined || notes.length === 0) return null;
+            // error first 
+            /**
+             * Erreur en premier error first permet d'éliminer les cas où le script qui suit cette gestion des erreurs ne marcherait pas. 
+             * On vérifie que la clé note du littéral existe et on vérifie que l'on a bien des notes dans le tableau
+             * Si ce n'est pas le cas on retourne null
+             */
+            if (notes == undefined || notes.length == 0) return null;
 
             const average = notes.reduce((acc, curr) => acc + curr) / notes.length;
+
+            // Math.round pour préserver le type float dans le calcul
             return Math.round(average * precision) / precision;
         }
 
@@ -31,34 +38,33 @@
             return (
                 <ul>
                     <li>Name : {name}</li>
-                    <li>Average : {average(notes) || "Pas de notes"}</li>
+                    <li>Average : {average(notes) || "pas de note"}</li>
                 </ul>
             )
         }
 
-        // Component
+        // mes données sont passées en props à mes composants enfants
         const App = () => {
             const students = [
                 { notes: [12, 11, 10], name: "Alan" },
                 { notes: [18, 10, 19], name: "Alice" },
                 { notes: [10, 9, 11], name: "Bernard" },
                 { notes: [11, 17, 19], name: "Sophie" },
-                { name: "Sophie" },
-                { name: "Sophie" },
+                { notes: [], name: "Aline" },
+                { name: "Arthur" },
             ];
-
             return (
-                <div>
+                <div className="main">
                     {students.map((student, i) => <Student key={i} {...student} />)}
                 </div>
             )
         }
 
-
         // Rendu dans le DOM
-        ReactDOM.createRoot(root).render(
-            <App />
-        );
+        ReactDOM.createRoot(
+            root).render(
+                <App />
+            );
     </script>
 </body>
 
