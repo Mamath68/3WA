@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8' />
+    <title>Hello React</title>
+    <script src='https://unpkg.com/react@18/umd/react.development.js'></script>
+    <script src='https://unpkg.com/react-dom@18/umd/react-dom.development.js'></script>
+    <script src='https://unpkg.com/babel-standalone@latest/babel.min.js'></script>
+</head>
+
+<body>
+    <div id='root'>
+
+    </div>
+    <script type='text/babel'>
+
+        let randomNumbers = [];
+        let pass = false;
+        let i = 0;
+
+        const NumberSortedDisplayer = (props) => {
+            const array = props.randomName;
+            const arraySorted = [...array].sort((a, b) => {
+                return a - b
+            })
+            console.log(array)
+
+            return (
+                <React.Fragment>
+                    <div id="unorder">{array}</div>
+                    <div id="order">{arraySorted}</div>
+                </React.Fragment>
+            )
+            console.log(array.sort((a, b) => {
+                return a - b
+            }))
+        }
+
+        const NumberMaker = (props) => {
+
+            const array = props.randomName;
+            let i = 0;
+            while (array.length < 20) {
+
+                pass = true;
+                const number = Math.floor(Math.random() * 21);
+
+                array.map((element) => {
+                    if (element == number) {
+                        pass = false
+                    }
+                })
+
+                if (pass == true) {
+                    array.push(number)
+                }
+            }
+
+            return (
+                <NumberSortedDisplayer randomName={array} />
+            )
+        }
+
+        const App = () => {
+
+            return (
+                <NumberMaker randomName={randomNumbers} />
+            )
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <App />
+        );
+    </script>
+    <style>
+        body {
+            height: 100vh;
+            background: linear-gradient(120deg, rgb(201, 235, 246), rgb(129, 180, 197));
+            font-size: 1.2em;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</body>
+
+</html>

@@ -4,7 +4,6 @@ Dans ce chapitre nous n'utiliserons pas la CRA systématiquement, mais nous allo
 
 L'approche fonctionnelle pour définir des composants impose l'utilisation des Hooks pour retrouver les fonctionnalités de React comme la gestion state, le life cycle par exemple.
 
-
 ```js
 function App(props){
 
@@ -160,7 +159,6 @@ const Counter = () => {
 
 Dans certain cas vous pouvez indiquer à React **de n'exécuter qu'une seule fois**, au montage (après le premier affichage), le code se trouvant dans useEffect. Il faudra alors passer en deuxième paramètre un tableau vide. Cela indique à React que votre **effet** (code dans useEffect) ne dépend d’aucune valeur issue d'un state (local), donc il n’a jamais besoin d’être ré-exécuté...
 
-
 ```js
 useEffect(() => {
 
@@ -228,7 +226,6 @@ const Counter = () => {
 
 Notez que c'est très pratique par exemple lorsqu'on doit se désabonner d'un service pour éviter les fuites mémoires.
 
-
 ### 01 Exercice Nettoyage (question)
 
 1. Il manque quelque chose dans le code suivant pour que le compteur puisse se déclencher. Corrigez le.
@@ -285,7 +282,7 @@ Un useReducer possède un reducer qui permet de prendre un state et une action e
 
 Un reducer peut être schématisé comme suit :
 
-![reducer](images/reducer.png)
+![reducer](images/J2_3_4_reducer.png)
 
 Créez un fichier useReducer.html et tester le code ci-dessous :
 

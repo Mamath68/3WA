@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React State Clock</title>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        const Clock = (props) => {
+            const [timer, setTimer] = React.useState(0);
+
+            const tick = () => {
+                console.log(timer);
+                setTimeout(() => setTimer(timer + 1), 1000);
+            };
+
+            tick();
+
+            return (
+                <div>
+                    <h1>Compteur</h1>
+                    {timer}
+                    <h1>Compteur cyclique</h1>
+                    {(timer % 10)}
+                </div>
+            )
+        }
+
+        root.render(
+            <Clock />
+        );
+
+    </script>
+</body>
+
+</html>

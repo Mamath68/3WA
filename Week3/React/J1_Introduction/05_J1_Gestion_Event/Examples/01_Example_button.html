@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <style>
+        .heading {
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const root = document.getElementById('root');
+
+        const App = (props) => {
+            const { numbers } = props;
+            const [pos, setPos] = React.useState(0);
+            const [num, setNum] = React.useState(10);
+
+            const handleClick = e => {
+                setPos((pos + 1) % numbers.length)
+            }
+
+            const handleChange = e => {
+                // récupérer la valeur du champ input
+                setNum(e.target.value);
+            }
+
+            return (
+                <React.Fragment>
+                    <h2>Cliquer pour avancer dans le tableau ci-dessous</h2>
+                    <button onClick={handleClick}>+1</button>
+                    <p>{numbers[pos]}</p>
+                    <p><input type="text" name="num" value={num} onChange={handleChange} />
+                        {num}
+                    </p>
+                </React.Fragment>
+            )
+        }
+
+        const rootElement = ReactDOM.createRoot(document.getElementById('root'));
+        rootElement.render(<App numbers={[1, 2, 3, 4, 88, 19, 190, 9, 0, 11]} />);
+
+    </script>
+</body>
+
+</html>

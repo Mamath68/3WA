@@ -25,8 +25,18 @@ this.state.b;
 Ne cherchez pas à mettre à jour le state d'une autre manière. Par exemple ce qui suit n'est pas la bonne méthode ceci ne mettra pas à jour le rendu :
 
 ```js
+// dans l'ancien code en class
 // ❌ Ne fonctionnera pas !
 this.state.a = 2;
+```
+
+Dans un composant fonctionnel vous ne pouvez pas modifier l'état d'un state comme suit :
+
+```js
+const [timer, setTimer] = React.useState(new Date)
+
+// ❌ Ne fonctionnera pas !
+timer = new Dat
 ```
 
 Pour mettre à jour le state vous devez utiliser la méthode `setState`, elle mettra à jour le rendu (re-exécution, avec les classes, de la méthode render de la classe).
@@ -34,8 +44,17 @@ Pour mettre à jour le state vous devez utiliser la méthode `setState`, elle me
 **Mise à jour du state** : notez que la mise à jour ci-dessous n'écrase pas la valeur "b" du state que l'on a défini précédemment, elle met à jour uniquement la valeur "a" du state. React fait ce que l'on appelle un delta avec le state initial.
 
 ```js
+// dans l'ancien code en class
 // ✅ Correct
 this.setState({ a: 11 });
+```
+
+Avec un composant fonctionel, pour le modifier ( bonne pratique pour définir les composants )
+
+```js
+const [timer, setTimer] = React.useState(new Date)
+// ✅ Correct
+setTimer( new Date ) 
 ```
 
 En résumé :
@@ -43,7 +62,11 @@ En résumé :
 - un accès possible au state avec :
 
 ```js
+// dans l'ancien code en class
 this.state.maValeur;
+
+// dans l'approche fonctionnelle
+timer
 ```
 
 - Une fonction pour mettre à jour le state :
@@ -86,7 +109,7 @@ class TestState extends React.Component {
 ReactDOM.createRoot(document.getElementById("root")).render(<TestState />);
 ```
 
-## 01 Exercice Clock setinterval
+## 01 Exercice Clock setTimeout
 
 Ré-implémentez l'horloge précédente que nous avons vue dans le chapitre sur les props, cette fois utilisez un **state** pour gérer le temps qui passe (h/m/s).
 
@@ -113,6 +136,6 @@ const Clock = () => {
 
 ## 02 Approche fonction avec un Hook
 
-1. En utilisant le Hook useState définissez un compteur qui s'incrémente toutes les secondes.
+1. En utilisant le Hook React.useState définissez un compteur qui s'incrémente toutes les secondes.
 
 2. Réalisez maintenant un compteur cyclique de période 10 (modulo 10 pour le counteur).

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <style>
+        #board {
+            display: grid;
+            grid-template-columns: repeat(20, minmax(0, 1fr));
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        /* Comment apparaissent les cubes */
+        @keyframes appear {
+            from {
+                transform: scale(0) rotate(180deg);
+            }
+
+            to {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <div id="board"></div>
+    </div>
+    <script>
+        function shuffleChildren(parent) {
+
+            let children = parent.children;
+            let i = children.length, k, temp;
+
+            while (--i > 0) {
+
+                k = Math.floor(Math.random() * (i + 1));
+                temp = children[k];
+                children[k] = children[i];
+                parent.appendChild(temp);
+            }
+        }
+
+        const box = document.createElement("div");
+        box.classList.add("box");
+
+        const board = document.querySelector("#board");
+
+        let nb = 1;
+
+        for (let i = 1; i <= 20; i++) {
+            let newbox = box.cloneNode();
+            newbox.innerText = i;
+            board.appendChild(newbox);
+        }
+        shuffleChildren(board);
+
+    </script>
+</body>
+
+</html>
