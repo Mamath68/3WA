@@ -1,0 +1,8 @@
+
+ul.number > li { 
+    display:inline-block;
+    margin: .2em;
+    padding : .2em ;
+    width: 20px;
+    border: slateblue solid 1px;
+}

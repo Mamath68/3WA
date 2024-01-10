@@ -1,0 +1,12 @@
+button {
+    cursor: pointer;
+    border: 2px solid purple;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+button:active {
+    transform: scale(1);
+}
