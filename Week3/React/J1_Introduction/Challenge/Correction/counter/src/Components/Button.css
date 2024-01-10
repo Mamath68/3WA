@@ -1,0 +1,29 @@
+.btn {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .4s;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.btn:not([disabled]) {
+    cursor: pointer;
+    border: 2px dashed #00BFA6;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .4s;
+}
+
+.btn:not([disabled]):hover {
+    transition: .4s;
+    border: 2px dashed #00BFA6;
+    background-color: #fff;
+    color: #00BFA6;
+}
+
+.btn:not([disabled]):active {
+    background-color: #87dbd0;
+}
+
+.btn:disabled {
+    background-color: #9fece3;
+}

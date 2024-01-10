@@ -1,11 +1,18 @@
-import React from 'react';
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Counter from './Pages/Counter'
+import Number from './Pages/Number'
+import Layout from './Components/Layout'
 
-const App = () => {
+function App() {
     return (
-        <>
-            <h1 className="red">Hello World</h1>
-        </>
+            <Layout>
+                <Routes>
+                    <Route path="/" element={<Counter />} />
+                    <Route path="/numbers" element={<Number />} />
+                </Routes>
+            </Layout>
     )
-};
+}
 
-export default App;
+export default App
