@@ -6,7 +6,6 @@
 
 1. Relisez le code pour révision, posez des questions éventuellement à votre formateur.
 
-
 ## Partie 2
 
 1. Dans un fichier unique mettez en place les dépendances React
