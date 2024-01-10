@@ -1,15 +1,12 @@
-import React from 'react'
 import Button from '../Components/Button'
 
-function Counter() {
+export default function Counter() {
     return (
-        <main>
-            <h1>Counter</h1>
+        <div className="main">
+            <h1>Counter Challenge 1</h1>
             <Button step={1} />
             <Button step={2} />
-            <Button step={1} modulo={10} />
-        </main>
-    )
+            <Button step={1} modulo={2} />
+        </div>
+    );
 }
-
-export default Counter;

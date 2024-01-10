@@ -6,7 +6,7 @@ const timer = 1000;
 const MAX_COUNTER = 10;
 
 // définition d'un composant
-export default function Button({ step, modulo }) {
+function Button({ step, modulo }) {
     // Hook pour gérer l'état d'un state
     const [count, setCount] = useState(0)
     const [disabled, setDisabled] = useState(false)
@@ -64,3 +64,5 @@ export default function Button({ step, modulo }) {
         </>
     );
 } 
+
+export default Button;

@@ -25,5 +25,6 @@
 }
 
 .btn:disabled {
-    background-color: #9fece3;
+    cursor: not-allowed;
+    pointer-events: all;
 }
