@@ -1,8 +1,8 @@
-import ShuffleHandler from './ShuffleBtn.js';
+import ShuffleHandler from './ShuffleBtn';
 import "./ShuffleBtn.css"
+import React from 'react'
 
-export function Shuffle() {
-
+function Shuffle() {
     const wisdom = "Malheur à ceux qui se contentent de peu"
     return (
         <div className="main">
@@ -12,3 +12,5 @@ export function Shuffle() {
         </div>
     );
 }
+
+export default Shuffle

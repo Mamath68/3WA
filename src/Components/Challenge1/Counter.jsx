@@ -1,6 +1,7 @@
-import { Button } from "./Button";
+import Button from "./Button";
+import React from 'react'
 
-export function Counter() {
+function Counter() {
     return (
         <div className="main">
             <h1>Counter Challenge 1</h1>
@@ -10,3 +11,5 @@ export function Counter() {
         </div>
     );
 }
+
+export default Counter

@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from "react";
-import './Button.css'
-import './TableDelay.css'
+import React, { useState, useEffect, useRef } from "react";
+import '../Challenge1/Button.css';
+import './TableDelay.css';
 
-export function TableDelay() {
+function TableDelay() {
     const [numbers, setNumbers] = useState([])
     const [orderNumbers, setorderNumbers] = useState([])
     const [count, setCount] = useState(0)
@@ -58,7 +58,7 @@ export function TableDelay() {
                     {numbers.map((num, i) => <li key={i}>{num}</li>)}
                 </ul>
             )}
-            { status && (
+            {status && (
                 <ul className="number">
                     {orderNumbers.slice(0, count + 1).map((num, i) => <li key={i}>{num}</li>)}
                 </ul>
@@ -66,3 +66,5 @@ export function TableDelay() {
         </div>
     );
 }
+
+export default TableDelay

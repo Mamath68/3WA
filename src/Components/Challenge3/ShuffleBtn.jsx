@@ -1,3 +1,5 @@
+import React from "react";
+
 const ShuffleHandler = ({ something }) => {
     const shuffleIt = function () {
         const wisdomEncryption = something.split("");
