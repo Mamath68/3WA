@@ -48,7 +48,7 @@ function TableDelay() {
     }
 
     return (
-        <div className="main">
+        <>
             <p>{count}</p>
             <h2>Génération d'un tableau de 10 nombres compris entre 1 et 20 aléatoires</h2>
             <button className="btn" onClick={generate}>Generate numbers</button>
@@ -63,7 +63,7 @@ function TableDelay() {
                     {orderNumbers.slice(0, count + 1).map((num, i) => <li key={i}>{num}</li>)}
                 </ul>
             )}
-        </div>
+        </>
     );
 }
 

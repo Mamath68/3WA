@@ -1,4 +1,13 @@
-.main {
-    width: 80%;
-    margin: 2em 10em;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(120deg, rgb(192, 201, 225), rgb(130, 140, 188));
+    height: 100vh;
+    overflow: hidden;
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
