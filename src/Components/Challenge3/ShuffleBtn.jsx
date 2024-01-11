@@ -1,4 +1,5 @@
 import React from "react";
+import './ShuffleBtn.css'
 
 const ShuffleHandler = ({ something }) => {
     const shuffleIt = function () {
@@ -23,8 +24,10 @@ const ShuffleHandler = ({ something }) => {
 
     return (
         <div>
-            <button onClick={shuffleIt}>Shuffle it</button>
-            <div><p id="encrypted"></p> </div>
+            <button className="btn" onClick={shuffleIt}>Shuffle it</button>
+            <div>
+                <p id="encrypted"></p>
+            </div>
         </div>
     )
 }
