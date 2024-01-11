@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_Reducer</title>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const actions = {
+            GET_NAME_LENGTH: 'GET_NAME_LENGTH',
+            TO_UPPERCASE: 'TO_UPPERCASE',
+            SORT_NAMES: 'SORT_NAMES',
+        };
+
+        const reducer = (state, action) => {
+            switch (action.type) {
+                case actions.GET_NAME_LENGTH:
+                    return { ...state, namesLengths: state.populations.map(person => person.name.length) };
+                case actions.TO_UPPERCASE:
+                    return { ...state, populations: state.populations.map(person => ({ ...person, name: person.name.toUpperCase() })) };
+                case actions.SORT_NAMES:
+                    return { ...state, populations: [...state.populations].sort((a, b) => a.name.localeCompare(b.name)) };
+                default:
+                    return state;
+            }
+        };
+
+        const App = () => {
+            const initialState = {
+                populations: [
+                    { "id": 0, "name": "Alan" },
+                    { "id": 1, "name": "Albert" },
+                    { "id": 2, "name": "Jhon" },
+                    { "id": 3, "name": "Brice" },
+                    { "id": 4, "name": "Alexendra" },
+                    { "id": 5, "name": "Brad" },
+                    { "id": 6, "name": "Carl" },
+                    { "id": 7, "name": "Dallas" },
+                    { "id": 8, "name": "Dennis" },
+                    { "id": 9, "name": "Edgar" },
+                    { "id": 10, "name": "Erika" },
+                    { "id": 11, "name": "Isaac" },
+                    { "id": 12, "name": "Ian" },
+                    { "id": 13, "name": "Issa" }
+                ],
+                namesLengths: [],
+            };
+
+            const [state, dispatch] = React.useReducer(reducer, initialState);
+
+            return (
+                <div>
+                    <button onClick={() => dispatch({ type: actions.GET_NAME_LENGTH })}>
+                        Obtenir les longueurs des noms
+                    </button>
+                    <button onClick={() => dispatch({ type: actions.TO_UPPERCASE })}>
+                        Mettre en majuscule
+                    </button>
+                    <button onClick={() => dispatch({ type: actions.SORT_NAMES })}>
+                        Trier les noms
+                    </button>
+
+                    <ul>
+                        {state.populations.map((person, index) => (
+                            <li key={person.id}>
+                                {person.name} ({state.namesLengths[index]})
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        };
+
+        const root = document.getElementById('root');
+
+        ReactDOM.createRoot(root).render(
+            <App />
+        );
+    </script>
+</body>
+
+</html>

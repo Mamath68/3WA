@@ -320,6 +320,34 @@ Le code suivant permet de faire un conteneur qui ne crée pas d'élément HTML d
 <React.Fragment></React.Fragment>
 ```
 
+## 02.bis Exercice reducer
+
+Soit le store suivant, à l'aide d'un useReducer créez les actions suivantes pour réaliser ce qui suit :
+
+1. Une fonction (action) qui permet de donner la longueur des noms.
+1. Une fonction (action) qui permet de mettre tous les noms en majuscuile.
+1. Une fonctiion (action) qui permet d'ordonner les personnes affichées.
+
+```json
+
+const populations = [
+    { "id": 0, "name": "Alan" },
+    { "id": 1, "name": "Albert" },
+    { "id": 2, "name": "Jhon" },
+    { "id": 3, "name": "Brice" },
+    { "id": 4, "name": "Alexendra" },
+    { "id": 5, "name": "Brad" },
+    { "id": 6, "name": "Carl" },
+    { "id": 7, "name": "Dallas" },
+    { "id": 8, "name": "Dennis" },
+    { "id": 9, "name": "Edgar" },
+    { "id": 10, "name": "Erika" },
+    { "id": 11, "name": "Isaac" },
+    { "id": 12, "name": "Ian" },
+    { "id" : 13, "name" : "Issa"}
+];
+```
+
 ## 03 Exercice Calculator
 
 Reprendre l'exercice du Challenge avec uniquement les options suivante en utilisant un useReducer pour gérer l'état de vos states de votre composant. Le code sera à faire dans un fichier index.html comme d'habitude.
