@@ -1,4 +1,5 @@
 import React, { useState, useReducer, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const initialState = {
     input: '',
@@ -20,7 +21,7 @@ const Calculator = () => {
         const handleKeyPress = (event) => {
             const key = event.key;
 
-            if (!isNaN(key) || ['+', '-', '*', '/', '=', 'Enter'].includes(key)) {
+            if (!isNaN(key) || ['+', '*', '=', 'Enter'].includes(key)) {
                 handleKeyClick(key);
             } else if (key === 'Backspace') {
                 handleBackClick();
@@ -57,7 +58,7 @@ const Calculator = () => {
 
     return (
         <div className="container mt-5">
-            <h1 className="text-center mb-4">Calculatrice avec useReducer Complête</h1>
+            <h1 className="text-center mb-4">Calculatrice avec useReducer Basique</h1>
             <div className="row">
                 <div className="col-md-4 mx-auto border p-4 bg-black">
                     <input
@@ -69,7 +70,7 @@ const Calculator = () => {
                     />
 
                     <div className="d-flex justify-content-between">
-                        {[7, 8, 9, '/'].map((item) => (
+                        {[7, 8, 9, '+'].map((item) => (
                             <button
                                 key={item}
                                 className="btn btn-secondary"
@@ -93,7 +94,7 @@ const Calculator = () => {
                     </div>
 
                     <div className="d-flex justify-content-between mt-2">
-                        {[1, 2, 3, '-'].map((item) => (
+                        {[0, 1, 2, 3].map((item) => (
                             <button
                                 key={item}
                                 className="btn btn-secondary"
@@ -105,7 +106,7 @@ const Calculator = () => {
                     </div>
 
                     <div className="d-flex justify-content-between mt-2">
-                        {[0, 'C', '=', '+'].map((item) => (
+                        {['.', '=', 'C'].map((item) => (
                             <button
                                 key={item}
                                 className={`btn ${item === '=' ? 'btn-primary' : 'btn-secondary'
