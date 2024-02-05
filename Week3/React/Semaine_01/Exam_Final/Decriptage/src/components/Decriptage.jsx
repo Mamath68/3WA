@@ -68,7 +68,7 @@ const Decriptage = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center">
+        <div className="min-h-screen flex items-center justify-center ">
             <div className="max-w-md w-full">
                 <input
                     type="text"
@@ -88,7 +88,7 @@ const Decriptage = () => {
                 </div>
                 <button
                     onClick={handleEncrypt}
-                    className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700"
+                    className="btn-primary"
                 >
                     Crypter
                 </button>
@@ -103,7 +103,7 @@ const Decriptage = () => {
                 {encryptedText && (
                     <button
                         onClick={handleDecrypt}
-                        className="mt-4 bg-green-500 text-white p-2 rounded-md hover:bg-green-700"
+                        className="btn-success"
                     >
                         Décrypter
                     </button>
