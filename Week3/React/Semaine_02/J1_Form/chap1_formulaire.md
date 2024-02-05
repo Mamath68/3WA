@@ -61,39 +61,7 @@ Indication sur la structure de l'application :
   Users
 ```
 
-Le composant Form pourrait être assez proche à ceci :
 
-```js
-
-function Form (props) {
-  const [value, setValue] = React.useState("");
-  const [users, setUser] = React.useState([]);
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    console.log(`New User : ${value}`);
-    event.preventDefault();
-  };
-
-   return (
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            value={state.value}
-            onChange={handleChange}
-          />
-        </label>
-        <input type="submit" value="Add user" />
-        Affichez ici les utilisateurs
-      </form>
-    );
-}
-```
 
 ## Textarea
 
@@ -159,9 +127,46 @@ const { value, name } = event.target;
 
 ## 02 Exercice formulaire calcul des multiples d'un nombre entier
 
+Créez un projet avec vite.js 
+
+:shell:
+
+```bash
+# tapez la ligne de commande suivante pour configurer un projet avec vite.js 
+npm create vite@latest
+```
+
+1. Sélectionnez un projet React sans TypeScript, un projet React seul.
+1. Tapez entrée 
+1. Mettez dans le dossier de l'application et tapez la commande suivante 
+
+ :shell:
+
+```bash
+npm install 
+
+# lance le serveur de tests
+npm run dev 
+```
+
+vite est un builder qui permet d'avoir une structure d'application simple pour développer.
+
+- index.html dans le dossier de l'application est le point d'entrée de l'application avec #root pour l'arbre de React 
+- main.jsx est un fichier d'amorçage ou bootstrap qui configure les dépendances de l'application.
+- Le reste des dossiers et fichiers du dossier src/ c'est une structure classique d'application, où on développera les composants et leurs fichiers de styles spécifiques et global index.css définira les styles CSS pour l'ensemble des composants.
+
+```txt
+├── App.css
+├── App.jsx
+├── assets
+│   └── react.svg
+├── index.css
+└── main.jsx
+```
+
 _Vous pouvez faire l'exercice dans un seul et même fichier._
 
-1. Créez un formulaire permettant de calculer les multiples d'un nombre entier, vous afficherez tous ses multiples inférieurs ou égale à 100.
+1. Créez un formulaire permettant de calculer les multiples d'un nombre entier, vous afficherez tous ses multiples inférieurs ou égale à 20.
 
 Créez un champ de sélection permettant de choisir un nombre parmi une liste de valeurs. Pensez à faire une boucle.
 
@@ -186,10 +191,18 @@ Voyez le wireframe suivant pour vous aider :
 -----
 
 Multiple de 11 :
-11
-22
-33
-44
-...
-99
+11 
+22 
+```
+
+1. Affichez les nombres avec un bouton de suppression, implémentez pour chaque valeur la possibilité de supprimer une valeur ou plusieurs.
+
+```text
+ [11]
+
+-----
+
+Multiple de 11 :
+11 []
+22 []
 ```

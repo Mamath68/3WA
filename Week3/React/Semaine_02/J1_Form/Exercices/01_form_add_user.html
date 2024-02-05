@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Add user</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // composant props sont en lecture seule, et les states sont mutables 
+        // state => mutable dès qu'ils changent d'état (de valeur) un re-render s'effectue
+        function App(props) {
+            // React.useState([])
+            return (
+                <React.Fragment>
+                    <h1>{props.title}</h1>
+                    <p>Hello</p>
+                </React.Fragment>
+            )
+        }
+
+        function Form(props){
+
+            return (
+                <form></form>
+            )
+        }
+
+        function Users(props){
+
+            return (
+                <ul></ul>
+            )
+        }
+
+        const root = document.getElementById('root');
+
+        const app = ReactDOM.createRoot(root);
+        app.render(
+            <React.StrictMode>
+                <App title="Add user" />
+            </React.StrictMode>
+        );
+    </script>
+
+</body>
+
+</html>

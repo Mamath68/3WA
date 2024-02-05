@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React 18 avec Tailwind CSS - Dev</title>
+    <script
+      defer
+      src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <!-- CDN pour React 18 (mode développement) -->
+    <script
+      defer
+      src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script
+      defer
+      src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- CDN pour Tailwind CSS (mode développement) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel" defer>
+      // composant props sont en lecture seule, et les states sont mutables
+      // state => mutable dès qu'ils changent d'état (de valeur) un re-render s'effectue
+      function App(props) {
+        return (
+          <React.Fragment>
+            <div className="max-w-md mx-auto mt-8">
+              <Form />
+            </div>
+          </React.Fragment>
+        );
+      }
+
+      function Form(props) {
+        const [users, setUser] = React.useState([]);
+        const [username, setUsername] = React.useState("");
+        const [message, setMessage] = React.useState("");
+
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          setMessage("");
+          // error first
+          if (username.trim() === "") {
+            setMessage("le champ ne doit pas être vide");
+
+            return;
+          }
+
+          if (users.includes(username)) {
+            setMessage("Il existe déjà");
+
+            return;
+          }
+
+          // add user dans la liste
+          users.push(username);
+          setUser(users);
+          setUsername("");
+        };
+
+        const handleChange = (e) => {
+          const { value } = e.target;
+          setUsername(value.toUpperCase());
+        };
+
+        return (
+          <React.Fragment>
+            {message && <p>{message}</p>}
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Username:
+                  <input
+                    name="username"
+                    type="text"
+                    value={username}
+                    onChange={handleChange}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  />
+                </label>
+              </div>
+              <div className="flex items-center justify-between">
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  type="submit">
+                  Ajouter utilisateur
+                </button>
+              </div>
+            </form>
+            <Users dataUsers={users} />
+          </React.Fragment>
+        );
+      }
+
+      function Users({ dataUsers }) {
+        return (
+          <ul>
+            {dataUsers.map((user, i) => (
+              <li key={i}>{user}</li>
+            ))}
+          </ul>
+        );
+      }
+
+      const root = document.getElementById("root");
+
+      const app = ReactDOM.createRoot(root);
+      app.render(
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      );
+    </script>
+  </body>
+</html>
