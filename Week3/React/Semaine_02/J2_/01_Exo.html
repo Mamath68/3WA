@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice 1 - Jours 2</title>
+    <script
+      defer
+      src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <!-- CDN pour React 18 (mode développement) -->
+    <script
+      defer
+      src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script
+      defer
+      src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- CDN pour Tailwind CSS (mode développement) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel" defer>
+      function App(props) {
+        return (
+          <React.Fragment>
+            <div className="max-w-md mx-auto mt-8">
+              <h1 className="text-3xl font-bold">Hello World!</h1>
+            </div>
+          </React.Fragment>
+        );
+      }
+
+      const root = document.getElementById("root");
+
+      const app = ReactDOM.createRoot(root);
+      app.render(
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      );
+    </script>
+  </body>
+</html>
