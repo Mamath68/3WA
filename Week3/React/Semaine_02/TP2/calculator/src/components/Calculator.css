@@ -1,0 +1,10 @@
+/* src/components/Calculator.css */
+.calculator {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.row .col-3 {
+  padding: 4px;
+}
