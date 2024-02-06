@@ -1,23 +1,8 @@
-html {
-  box-sizing: border-box;
-}
-* {
-  margin: 0;
-  padding: 0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-html,
-body {
-  line-height: 1.5;
-}
-
-/* 
+@layer base {
   h1 {
     @apply text-3xl font-bold;
   }
@@ -48,4 +33,5 @@ body {
 
   a {
     @apply hover:underline;
-  } */
+  }
+}

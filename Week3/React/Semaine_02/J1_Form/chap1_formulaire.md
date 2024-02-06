@@ -61,8 +61,6 @@ Indication sur la structure de l'application :
   Users
 ```
 
-
-
 ## Textarea
 
 La particularité d'un textarea en HTML c'est qu'il définit son contenu texte par une structure de type composition. React utilise l'attribut value pour définir la valeur d'un élément, vous utiliserez donc la syntaxe suivante avec cet élément :
@@ -127,7 +125,7 @@ const { value, name } = event.target;
 
 ## 02 Exercice formulaire calcul des multiples d'un nombre entier
 
-Créez un projet avec vite.js 
+Créez un projet avec vite.js
 
 :shell:
 
@@ -137,8 +135,8 @@ npm create vite@latest
 ```
 
 1. Sélectionnez un projet React sans TypeScript, un projet React seul.
-1. Tapez entrée 
-1. Mettez dans le dossier de l'application et tapez la commande suivante 
+1. Tapez entrée
+1. Mettez dans le dossier de l'application et tapez la commande suivante
 
  :shell:
 
@@ -151,7 +149,7 @@ npm run dev
 
 vite est un builder qui permet d'avoir une structure d'application simple pour développer.
 
-- index.html dans le dossier de l'application est le point d'entrée de l'application avec #root pour l'arbre de React 
+- index.html dans le dossier de l'application est le point d'entrée de l'application avec #root pour l'arbre de React
 - main.jsx est un fichier d'amorçage ou bootstrap qui configure les dépendances de l'application.
 - Le reste des dossiers et fichiers du dossier src/ c'est une structure classique d'application, où on développera les composants et leurs fichiers de styles spécifiques et global index.css définira les styles CSS pour l'ensemble des composants.
 
