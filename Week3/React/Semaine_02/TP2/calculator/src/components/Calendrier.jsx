@@ -1,6 +1,6 @@
 // src/components/Calendrier.js
 import React, { useReducer, useEffect } from "react";
-import {reducer, initialState } from "./../reducer/calendar";
+import { reducer, initialState } from "./../reducer/calendar";
 import localforage from "localforage";
 
 const Calendrier = () => {
@@ -17,7 +17,6 @@ const Calendrier = () => {
         console.error("Error loading calculations from local storage:", error);
       }
     };
-
     loadCalculations();
   }, []);
 
