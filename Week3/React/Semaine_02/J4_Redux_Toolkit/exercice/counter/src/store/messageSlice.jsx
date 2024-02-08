@@ -1,29 +1,33 @@
 // import de la fonction 
-import { configureStore, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
-// définit un state 
-const initialState = { message: "Hello World!" }
+const initialState = {
+    message: 'Hello la FSD 49',
+    messages: []
+}
 
-const messageSlice = createSlice({
-    // clé permettant d'identifier le reducer spécifique 
+// create slice une unité autonome de gestion d'un store avec ses reducers
+export const messageSlice = createSlice({
     name: 'message',
     initialState,
     // gestions des actions dans le/les reducer(s) du state
     reducers: {
-        changeMessage(state, action) {
+        changeMessage: (state, action) => {
             state.message = action.payload
+        },
+        addMessage: (state, action) => {
+            state.messages.push(action.payload)
+        },
+        toUpperCase: (state) => {
+            state.messages = state.messages.map(message => message.toUpperCase())
+        },
+        toLowerCase: (state) => {
+            state.messages = state.messages.map(message => message.toLowerCase())
+        },
+        shuffleMessages: (state, action) => {
+            state.messages.sort((a, b) => Math.random() - .5)
         }
     },
 })
 
-// Export des actions
-const store = configureStore({
-    reducer: {
-        m: messageSlice.reducer
-    }
-});
-
-export const { changeMessage } = messageSlice.actions
-
-// pour contextualiser le store dans l'arbre React
-export default store;
+export const { addMessage, changeMessage, toUpperCase, toLowerCase, shuffleMessages } = messageSlice.actions

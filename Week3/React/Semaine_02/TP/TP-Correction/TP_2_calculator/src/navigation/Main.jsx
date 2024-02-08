@@ -10,8 +10,8 @@ const navigation = [
     { name: 'Day 3', href: '/day/2', },
     { name: 'Day 4', href: '/day/3', },
     { name: 'Day 5', href: '/day/4' },
-    { name: 'Day 5', href: '/day/5', },
-    { name: 'Day 6', href: '/day/6', },
+    { name: 'Day 6', href: '/day/5', },
+    { name: 'Day 7', href: '/day/6', },
 ]
 
 function Main() {

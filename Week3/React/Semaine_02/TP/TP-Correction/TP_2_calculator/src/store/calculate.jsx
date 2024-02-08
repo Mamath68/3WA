@@ -6,9 +6,7 @@ const CalculateContexte = createContext()
 
 /*
 2. Provider permet de contextualiser la logique du reducer à l'ensemble des composants de l'arbre de React ou une partie 
-
 PascalCase pour nommer les contextes et provider 
-
 */
 export const CalculateProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -21,12 +19,12 @@ export const CalculateProvider = ({ children }) => {
         dispatch({ type: "RESET" });
     };
 
-    const calcul = () => {
-        dispatch({ type: "CALCUL" });
+    const calculTotal = () => {
+        dispatch({ type: "TOTAL" });
     };
 
     return (
-        <CalculateContexte.Provider value={{ state, reset, setSymbol, calcul }}>
+        <CalculateContexte.Provider value={{ state, reset, setSymbol, calculTotal }}>
             {children}
         </CalculateContexte.Provider>
     )

@@ -7,13 +7,22 @@ const LOCALFORAGE_KEY = 'calculatorState';
 // Fonction de calcul du tableau
 function calcul(symbols) {
     let [s, i] = [0, 0];
-    let op = (a, b) => parseFloat(a) + parseFloat(b);
+    let op = (a, b) => a + b;
     while (i < symbols.length) {
-        if (symbols[i] == '+') op = (a, b) => parseFloat(a) + parseFloat(b);
-        if (symbols[i] == '*') op = (a, b) => parseFloat(a) * parseFloat(b);
-        if (symbols[i] == '-') op = (a, b) => parseFloat(a) - parseFloat(b);
-
-        if (symbols[i] != "+" && symbols[i] != "*" && symbols[i] != "-") s = op(s, symbols[i]);
+        switch (symbols[i]) {
+            case "+":
+                op = (a, b) => a + b;
+                break;
+            case "*":
+                op = (a, b) => a * b;
+                break;
+            case "-":
+                op = (a, b) => a - b;
+                break;
+            default:
+                let [a, b] = [parseFloat(s), parseFloat(symbols[i])]
+                s = op(a, b);
+        }
 
         i++;
     }
@@ -23,18 +32,11 @@ function calcul(symbols) {
 
 // Fonction pour vérifier la cohérence des symboles
 function isCorrect(symbol, symbols, v = ['*', '+', '-']) {
-    if (symbols.length == 0 && v.includes(symbol)) return false;
-    // si = on ne peut pas ajouter un nombre
-    if (symbol == '=') return false;
-    const lastSymbol = symbols[symbols.length - 1];
-    if (v.includes(symbol) && v.includes(lastSymbol)) {
-        // mutation du state effet de bord TODO
-        symbols[symbols.length - 1] = symbol;
+    const isEmptySymbols = symbols.length === 0;
+    const lastSymbol = isEmptySymbols ? null : symbols[symbols.length - 1];
 
-        return false
-    }
-    symbol = parseFloat(symbol);
-
+    if (isEmptySymbols && v.includes(symbol)) return false;
+    if (v.includes(symbol) && v.includes(lastSymbol)) return false
     if (isNaN(parseFloat(symbol)) === false && isNaN(parseFloat(lastSymbol)) === false) return false;
 
     return true;
@@ -51,14 +53,18 @@ export const initialState = {
 
 /**
  * L'algorithme se base sur un opérande dans total et un nombre dans number => on fait un calcul
+ * Travaillez toujours sur une copie du state
  */
 export default (state, action) => {
     switch (action.type) {
         case "SET_SYMBOL":
             const symbol = action.payload;
 
-            // on peut changer d'opérateur
-            if (state.operators.includes(symbol)) state.symbol = state.symbols.length ? symbol : null;
+            // on peut changer d'opérateur si on en a déjà sélectionné un
+            if (state.operators.includes(symbol)) {
+                state.symbol = state.symbols.length ? symbol : null;
+                state.symbols.length && state.operators.includes(state.symbols.length - 1) ? state.symbols[state.symbols.length - 1] = symbol : null;
+            }
 
             // On vérifie si on peut ajouter le bon symbole dans le champ vide
             if (state.number == '' && isCorrect(symbol, state.symbols) === false) return { ...state, number: '' };
@@ -70,7 +76,7 @@ export default (state, action) => {
                     number: '',
                     symbols: [...state.symbols, state.number, symbol],
                     symbol,
-                    total: calcul([...state.symbols, state.number])
+                    total: calcul([...state.symbols, state.number]) // calcul partiel 
                 };
             }
 
@@ -81,23 +87,11 @@ export default (state, action) => {
                     number: '',
                     symbols: [...state.symbols, symbol],
                     symbol,
-                    total: calcul([...state.symbols])
+                    total: calcul([...state.symbols]) // calcul partiel 
                 };
             }
 
-            if (symbol === '=') {
-                const symbols = state.number !== '' ? [...state.symbols, state.number] : [...state.symbols];
-
-                return {
-                    ...state,
-                    number: '',
-                    symbols,
-                    symbol,
-                    total: calcul(symbols),
-                };
-            }
-
-            // Ce n'est pas un opérateur
+            // Ce n'est pas un opérateur mais une valeur 
             const number = state.number + action.payload;
 
             return {
@@ -105,16 +99,28 @@ export default (state, action) => {
                 number,
             };
 
+        case "TOTAL":
+            const symbols = state.number !== '' ? [...state.symbols, state.number] : [...state.symbols];
+
+            // attention si on retape sur total après avoir sélection un opérateur =>  on le retire
+            if (state.symbols[state.symbols.length - 1] && state.operators.includes(state.symbols[state.symbols.length - 1])) {
+                state.symbols.pop()
+            }
+
+            return {
+                ...state,
+                number: '',
+                symbols,
+                symbol: '',
+                total: calcul(symbols),
+            };
+
 
         case "RESET":
 
             return {
                 ...state,
-                symbols: [],
-                symbol: '',
-                operator: '',
-                number: '',
-                total: ''
+                ...initialState
             };
 
         default:

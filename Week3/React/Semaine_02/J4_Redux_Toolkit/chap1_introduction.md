@@ -68,7 +68,7 @@ import { changeMessage } from './store/messageSlice';
 // ...
 ```
 
-### Exercice gestion de messages 
+### Exercice gestion de messages
 
 > [!NOTE]
 > Organisez le projet en dossiers et fichiers de manière logique en fonction des features demmandées.
@@ -79,7 +79,7 @@ import { changeMessage } from './store/messageSlice';
    - Créez une action qui permet de mettre tous les messages en majuscule
    - Créez une action permettant de mélanger l'ordre des messages
 
-###  Exercice counter synchrone
+### Exercice counter synchrone
 
 Rappelons que Redux gère les actions de manière synchrone.
 
@@ -87,7 +87,7 @@ Créez un compteur aléatoire en utilisant reduxtoolkit.
 
 Dans la suite de l'exercice créez un dossier store dans l'application dans lequel vous implémenterez le code de vos createSlice.
 
-1. Installez le projet **app-counter** avec vite (bundle). 
+1. Installez le projet **app-counter** avec vite (bundle).
 
 2. Créez un bouton pour incrémenter une valeur de manière aléatoire.
 
@@ -149,11 +149,11 @@ const usersSlice = createSlice({
 
 Reprendre l'exercice précédent sur le counter.
 
-1. Définissez un compteur asynchrone dans une promesse. 
+1. Définissez un compteur asynchrone dans une promesse.
 
 2. Ajoutez un bouton permettant d'afficher une valeur incrémentée +1 de manière asynchrone en utilisant createAsynchThunk
 
-### 03 Exercice middleware 
+### 03 Exercice middleware
 
 Nous allons afficher une liste incrémentable d'étoiles dans le component principal; pour chaque incrémentation d'une valeur aléatoire pair ou impair, on affichera une étoile. Cette liste "graphique" sera placée sous les valeurs affichées par notre compteur précédent, voyez le wireframe ci-après.
 
@@ -178,8 +178,8 @@ createStore({
     reducer { },
     middleware : (getDefaultMiddleware) =>getDefaultMiddleware().concat([ ...middlewares ] )
 });
-``` 
+```
 
-Rendu visuel 
+Rendu visuel
 
 ![counter](./images/counter.png)

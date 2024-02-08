@@ -5,7 +5,7 @@ function Layout({ children }) {
     return (
         <>
             <Main />
-            <div className="bg-gray-100 flex items-center justify-center">
+            <div className="bg-gray-100 h-screen flex items-center justify-center">
                 {children}
             </div>
         </>
