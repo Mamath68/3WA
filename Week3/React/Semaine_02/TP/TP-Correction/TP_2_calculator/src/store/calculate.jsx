@@ -1,11 +1,5 @@
 import { createContext, useContext, useReducer } from "react"
-import reducer from './reducer'
-const initialState = {
-    total : [],
-    number : '',
-    operator : '',
-    buttons : [7, 8, 9, 4, 5, 6, 1, 2, 3, 0]
-}
+import reducer, { initialState } from './reducer'
 
 // 1. création d'un contexte pour partager les actions et le state dans l'arbre de React
 const CalculateContexte = createContext()
@@ -16,19 +10,23 @@ const CalculateContexte = createContext()
 PascalCase pour nommer les contextes et provider 
 
 */
-export const CalculateProvider =  ({children}) => {
-    const [state, dispatch] = useReducer(reducer, initialState) ;
+export const CalculateProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(reducer, initialState);
 
-    const setNumber = (number) => {
-        dispatch({ type : "SET_NUMBER", payload : number })
-    }
+    const setSymbol = (symbol) => {
+        dispatch({ type: "SET_SYMBOL", payload: symbol });
+    };
 
     const reset = () => {
-        dispatch({ type : "RESET" })
-    }
+        dispatch({ type: "RESET" });
+    };
+
+    const calcul = () => {
+        dispatch({ type: "CALCUL" });
+    };
 
     return (
-        <CalculateContexte.Provider value={{state,setNumber, reset }}>
+        <CalculateContexte.Provider value={{ state, reset, setSymbol, calcul }}>
             {children}
         </CalculateContexte.Provider>
     )
