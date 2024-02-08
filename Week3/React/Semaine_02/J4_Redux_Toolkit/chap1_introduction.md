@@ -23,7 +23,7 @@ npm install react-redux
 
 ## createSlice gestion du state
 
-C'est une fonction, createSlice, qui accepte un état initial, et qui gère des créateurs d'action, permet de découper le state en plus petites parties autonomes.
+🚀 C'est une fonction, createSlice, qui accepte un état initial, et qui gère des créateurs d'action, permet de découper le state en plus petites parties autonomes.
 
 - Exemple dans un fichier messageSlice.jsx
 
@@ -40,7 +40,7 @@ const messageSlice = createSlice({
   initialState,
   // gestions des actions dans le/les reducer(s) du state
   reducers: {
-    changeMessage(state, action) {
+    showMessage(state, action) {
       state.message = action.payload
     }
   },
@@ -53,47 +53,35 @@ const store = configureStore({
     }
 });
 
-export const { changeMessage } = messageSlice.actions
+export const { showMessage } = messageSlice.actions
 
 // pour contextualiser le store dans l'arbre React
 export default store;
 ```
 
-Une fois que l'on a contextualisé le store de redux avec le component Provider de react-redux ( une autre dépendance installée), on doit utiliser ses hooks (react-redux), afin de pouvoir lire et/ou dispatcher des actions dans le state. Les actions de reduxtoolkit seront à exporter/importer.
+Une fois que l'on a contextualisé le store de redux avec le component Provider de react-redux, on doit utiliser ses hooks, afin de pouvoir lire et dispatcher des actions dans le state, les actions de reduxtoolkit sont importées.
 
 ```js
 import { useDispatch, useSelector } from 'react-redux';
-import { changeMessage } from './store/messageSlice';
+import { increment } from './store/valueSlice';
 
 // ...
 ```
 
-### Exercice gestion de messages
+### Partie 1 : Exercice counter synchrone
 
-> [!NOTE]
-> Organisez le projet en dossiers et fichiers de manière logique en fonction des features demmandées.
+> [!WARNING]
+> Rappelons que Redux gère les actions de manière synchrone.
 
-1. Créez un projet app-message avec les dépendances redux toolkit vu précédemment.
-1. Créez un store permettant de gérer l'ajout de messages et affichez ces messages dans un composant.
-1. Implémentez les fonctionnalitées suivantes :
-   - Créez une action qui permet de mettre tous les messages en majuscule
-   - Créez une action permettant de mélanger l'ordre des messages
-
-### Exercice counter synchrone
-
-Rappelons que Redux gère les actions de manière synchrone.
-
-Créez un compteur aléatoire en utilisant reduxtoolkit.
-
-Dans la suite de l'exercice créez un dossier store dans l'application dans lequel vous implémenterez le code de vos createSlice.
+1. Créez un compteur aléatoire en utilisant reduxtoolkit.
 
 1. Installez le projet **app-counter** avec vite (bundle).
 
-2. Créez un bouton pour incrémenter une valeur de manière aléatoire.
+1. Créez un bouton pour incrémenter une valeur de manière aléatoire.
 
-3. Pour chaque valeur affichée; vous indiquerez si le nombre est pair ou impair. Aidez-vous de la remarque qui suit pour mettre en place cette fonctionnalité.
+1. Pour chaque valeur affichée; vous indiquerez si le nombre est pair ou impair. Aidez-vous de la remarque qui suit pour mettre en place cette fonctionnalité.
 
-Remarque : Dans la partie reducers de votre slice (createSlice), vous pouvez découper une action en une fonction **reducer** et une fonction **prepare**, cette dernière fonction permet de gérer le payload, voyez l'exemple ci-dessous :
+👉 Remarque : Dans la partie reducers de votre slice (createSlice), vous pouvez découper une action en une fonction **reducer** et une fonction **prepare**, cette dernière fonction permet de gérer le payload, voyez l'exemple ci-dessous :
 
 ```js
 reducers: {
@@ -101,21 +89,25 @@ reducers: {
             reducer: (state, action) => {}
         }
         prepare : () => ({payload : ...})
+}
 ```
 
-### Gestion d'un state asynchrone
+## Parti 2 : 🤖 Gestion d'un state asynchrone dans notre exercice
 
-On utilise dans cette exemple la fonction **createAsynchThunk**.
+On utilise dans cette exemple la fonction **createAsynchThunk** de reduxtoolkit
 
-Une action asynchrone ne peut être dispatcher dans Redux sans passer par le middleware Thunk qui est intégré dans reduxtoolkit. En effet, toutes les actions dans Redux sont dispatchées de manière synchrone, **createAsynchThunk** attendra la résolution de la Promesse et dispatchera l'action dans le reducer de manière synchrone.
+👉 Une action asynchrone ne peut être dispatcher dans Redux sans passer par le middleware **Thunk** qui est intégré dans reduxtoolkit.
 
-#### Mise en pratique
+>[!NOTE]
+> En effet, toutes les actions dans Redux sont dispatchées de manière synchrone, **createAsynchThunk** attendra la résolution de la Promesse et dispatchera l'action dans le reducer de manière synchrone.
 
-On définit d'abord la fonction asynchrone elle-même, par exemple :
+### Mise en pratique
+
+On définit d'abord la fonction asynchrone à l'aide de **createAsynchThunk** elle-même, voyez l'exemple qui suit :
 
 ```js
 export const fetchUserById = createAsyncThunk(
-  'users/fetchByIdStatus',
+  'users/fetchByIdStatus', // nom interne pour reduxtoolkit
   async (userId: number, thunkAPI) => {
     const response = await userAPI.fetchById(userId)
     return response.data
@@ -123,7 +115,9 @@ export const fetchUserById = createAsyncThunk(
 )
 ```
 
-Puis dans la partie createSlice on peut préciser les états de la promesse:
+Puis dans la partie createSlice on précise les états de la promesse, au moins fullfilled ( promesse résolue ).
+
+- 👉 **extraReducers** permet le traitement de la promesse dans le createSlice
 
 ```js
 const usersSlice = createSlice({
@@ -145,13 +139,7 @@ const usersSlice = createSlice({
 })
 ```
 
-### 02 Exercice counter asynchrone
-
-Reprendre l'exercice précédent sur le counter.
-
-1. Définissez un compteur asynchrone dans une promesse.
-
-2. Ajoutez un bouton permettant d'afficher une valeur incrémentée +1 de manière asynchrone en utilisant createAsynchThunk
+1. Définissez un compteur asynchrone dans une promesse, affichez avec un délai de 500ms les nombres du compteur.
 
 ### 03 Exercice middleware
 
