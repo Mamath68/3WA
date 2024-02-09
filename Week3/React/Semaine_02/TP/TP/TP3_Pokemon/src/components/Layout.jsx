@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 
 const navigation = [
     { name: 'Pokemon', href: '/' },
-    { name: 'Type de Pokémon', href: '/types' },
-    { name: 'Capacité', href: '/abilities' },
+    { name: 'Les Types de Pokémon', href: '/types' },
+    { name: 'Les Différentes Capacités', href: '/abilities' },
 ]
 
 function Layout({ children }) {
