@@ -18,7 +18,7 @@ Vous devez également utiliser les techniques décrites dans le chapitre des tâ
 1. Un createSlice avec **createAsyncThunk**.
 1. RTK.
 
-### Tâches
+## Tâches
 
 1. Créez un nouveau projet React à l'aide de Vite.js.
 1. Installez Redux Toolkit et react-redux (module pour utiliser Redux dans React).
@@ -95,7 +95,7 @@ useEffect(() => {
 
 ## Partie 3 createSlice et createAsyncThunk (extrait de code)
 
-- 🚀 Récupération des données de Bulbasaur 
+- 🚀 Récupération des données de Bulbasaur
 
 ```jsx
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
@@ -142,7 +142,7 @@ export { fetchBulbasaur };
 
 ## Partie 4 RTK Query
 
-- 🚀 Récupération des données de Bulbasaur 
+- 🚀 Récupération des données de Bulbasaur
 
 ```jsx
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
@@ -169,7 +169,7 @@ export const { useGetPokemonByNameQuery } = pokemonApi
 const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur')
 ```
 
-Dans la partie configureStore vous devez écrire la syntaxe 
+Dans la partie configureStore vous devez écrire la syntaxe
 
 ```js
 import { configureStore } from '@reduxjs/toolkit'
@@ -192,5 +192,4 @@ export const store = configureStore({
 setupListeners(store.dispatch)
 ```
 
-
-# Bon travail! 🎉 
+### Bon travail! 🎉
