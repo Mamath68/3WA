@@ -13,16 +13,16 @@ import Layout from './components/Layout';
 
 const App = () => {
   const pokemonNames = [
-    "pikachu",
-    "charizard",
-    "bulbasaur",
-    "squirtle",
-    "jigglypuff",
-    "meowth",
-    "eevee",
-    "snorlax",
-    "mewtwo",
-    "gyarados"
+    "Pikachu",
+    "Charizard",
+    "Bulbasaur",
+    "Squirtle",
+    "Jigglypuff",
+    "Meowth",
+    "Eevee",
+    "Snorlax",
+    "Mewtwo",
+    "Gyarados"
   ];
 
   return (

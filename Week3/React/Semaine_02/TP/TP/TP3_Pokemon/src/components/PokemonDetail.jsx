@@ -1,4 +1,3 @@
-// PokemonDetail.js
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
@@ -55,6 +54,10 @@ const PokemonDetail = () => {
                             </p>
                         </div>
                         <div className="mb-4">
+                            <p className="text-lg font-bold mb-2">Sound:</p>
+                            <audio src={pokemon.cries.latest} controls></audio>
+                        </div>
+                        <div className="mb-4">
                             <p className="text-lg font-bold mb-2">Stats:</p>
                             {pokemon.stats.map(stat => (
                                 <div key={stat.stat.name} className="flex items-center mb-2">
@@ -81,6 +84,7 @@ const PokemonDetail = () => {
                                 ))}
                             </p>
                         </div>
+
                     </div>
                 </div>
             </div>

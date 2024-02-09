@@ -7,7 +7,7 @@ const AbilityList = () => {
 
     useEffect(() => {
         const fetchAbilities = async () => {
-            const response = await fetch('https://pokeapi.co/api/v2/ability');
+            const response = await fetch('https://pokeapi.co/api/v2/ability?offset=0&limit=367');
             const data = await response.json();
             setAbilities(data.results);
         };

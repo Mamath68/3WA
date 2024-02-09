@@ -15,7 +15,6 @@ const PokemonList = ({ pokemonNames }) => {
             );
             setPokemonData(data);
         };
-
         fetchPokemonData();
     }, [pokemonNames]);
 
@@ -38,7 +37,7 @@ const PokemonList = ({ pokemonNames }) => {
                                     </React.Fragment>
                                 ))}
                             </p>
-                            <img src={pokemon.sprites.front_default} alt={pokemon.name} className="mt-2" />
+                            <img src={pokemon.sprites.front_default} alt={pokemon.name} className="m-auto" />
                         </div>
                     </li>
                 ))}
