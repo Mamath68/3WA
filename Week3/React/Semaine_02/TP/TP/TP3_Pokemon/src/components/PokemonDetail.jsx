@@ -61,7 +61,7 @@ const PokemonDetail = () => {
                             <p className="text-lg font-bold mb-2">Stats:</p>
                             {pokemon.stats.map(stat => (
                                 <div key={stat.stat.name} className="flex items-center mb-2">
-                                    <span className="w-1/3">{stat.stat.name}:</span>
+                                    <span className="w-2/3 uppercase">{stat.stat.name}:</span>
                                     <span className="w-2/3">{stat.base_stat}</span>
                                 </div>
                             ))}
@@ -78,9 +78,9 @@ const PokemonDetail = () => {
                         <div className="mb-4">
                             <p className="text-lg">
                                 <span className="font-bold">Moves:</span> {pokemon.moves.map(move => (
-                                    <Link key={move.move.name} to={`/move/${move.move.name}`} className="text-blue-500 capitalize mr-2">
+                                    <p key={move.move.name} className="capitalize mr-2">
                                         {move.move.name}
-                                    </Link>
+                                    </p>
                                 ))}
                             </p>
                         </div>
